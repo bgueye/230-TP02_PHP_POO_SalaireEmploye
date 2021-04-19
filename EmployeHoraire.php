@@ -7,20 +7,19 @@ class EmployeHoraire extends Employe
     private $nbrHeureDeBase;
     private $nbrHeureReel;
     private $salHoraire;
-    private static $taux;
+    private static float $taux = 10.0;
 
 
-    public function __construct(string $nom, int $nbrHeureDeBase, int $nbrHeureReel, float $salHoraire, float $taux = 10)
+    public function __construct(string $nom, int $nbrHeureDeBase, int $nbrHeureReel, float $salHoraire)
     {
         parent::__construct($nom);
         $this->nbrHeureDeBase = $nbrHeureDeBase;
         $this->nbrHeureReel = $nbrHeureReel;
         $this->salHoraire = $salHoraire;
-        $this::$taux = $taux;
 
     }
 
-    public function getSalaire(): int
+    protected function getSalaire(): int
     {
         if($this->nbrHeureReel > $this->nbrHeureDeBase){
             $heureSup = $this->nbrHeureReel - $this->nbrHeureDeBase;
